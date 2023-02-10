@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
+    public function getUser(){
+        $user = Auth::user();
+        return $user;
+    }
+
     public function register(Request $request) {
         $validate = Validator::make($request->all(), [
             'name' => 'required|string',
